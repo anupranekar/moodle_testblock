@@ -49,10 +49,11 @@ class block_moodle_testblock extends block_base {
         $this->content->footer = '';
 
         $data = array();
+        // Get course modules and completion information.
         $modinfo = get_fast_modinfo($COURSE->id, $USER->id);
         $coursemodules = $modinfo->get_cms();
         $completion = new completion_info($COURSE);
-
+        // Prepare block data for display.
         foreach ($coursemodules as $coursemodule) {
             if ($coursemodule->visible) {
                 $type = $coursemodule->modname;
@@ -70,7 +71,7 @@ class block_moodle_testblock extends block_base {
                 );
             }
         }
-
+        // Display the block content.
         $this->content->text = $OUTPUT->render_from_template('block_moodle_testblock/content', $data);
 
         return $this->content;
@@ -82,6 +83,7 @@ class block_moodle_testblock extends block_base {
      * @return array of the pages where the block can be added.
      */
     public function applicable_formats() {
+        // Allow block to be added on course view page only.
         return [
             'all' => false,
             'course-view' => true,
