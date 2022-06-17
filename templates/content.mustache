@@ -1,0 +1,63 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template block_moodle_testblock/content
+
+
+    Example context (array):
+    array(
+        array(
+            'cmid' => 1,
+            'act_name' => 'Act 1',
+            'act_url' => 'https://www.example.com',
+            'creation_date' => '15-Jun-2022',
+            'show_completion_status' => true,
+        ),
+        array(
+            'cmid' => 2,
+            'act_name' => 'Act 2',
+            'act_url' => 'https://www.example.com',
+            'creation_date' => '16-Jun-2022',
+            'show_completion_status' => false,
+        ),
+        .
+        .
+        .
+        .
+        .
+         array(
+            'cmid' => n,
+            'act_name' => 'Act n',
+            'act_url' => 'https://www.example.com',
+            'creation_date' => '17-Jun-2022',
+            'show_completion_status' => true,
+        ),
+    );
+}}
+{{#.}}
+	<p> 
+        {{cmid}} 
+        {{#str}}separator, block_moodle_testblock{{/str}} 
+        <a href="{{{act_url}}}"> {{act_name}} </a> 
+        {{#str}}separator, block_moodle_testblock{{/str}} 
+        {{creation_date}} 
+        {{#show_completion_status}} 
+            {{#str}}separator, block_moodle_testblock{{/str}} 
+            {{#str}}completed{{/str}} 
+        {{/show_completion_status}} 
+    </p>
+{{/.}}
